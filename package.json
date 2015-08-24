@@ -4,7 +4,8 @@
   "version": "0.0.1",
   "main": "server/app.js",
   "scripts": {
-    "start": "gulp --harmony"
+    "dev": "gulp --harmony",
+    "start": "node --harmony --use_strict --harmony_generators server/server.js"
   },
   "dependencies": {
     "bcrypt": "^0.8.5",
