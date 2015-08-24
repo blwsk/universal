@@ -14,12 +14,21 @@ const Button = require('../src/button.jsx');
 const markup = React.renderToString(<Button count={0} />);
 
 router.get('*', function(req, res, next) {
-
-  res.render('template', {
-    title: 'Universal App',
-    body: markup,
-    assetRoot: 'build'
-  });
+  if (process.env.NODE_ENV == 'production') {
+    res.render('template', {
+      title: 'Universal App',
+      body: markup,
+      assetRoot: '//s3.amazonaws.com/universal-demo/'
+    });
+  }
+  else {
+    res.render('template', {
+      title: 'Universal App',
+      body: markup,
+      assetRoot: '/build/'
+    });
+  }
+  
 });
 
 export default router;
