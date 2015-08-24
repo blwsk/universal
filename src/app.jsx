@@ -1,12 +1,8 @@
 import React from 'react';
 
-export default class App extends React.Component {
+import Button from './button.jsx';
 
-  render() {
-
-    return (
-      <div>This is server rendered React</div>
-    );
-  }
-
-}
+React.render(
+  <Button count={0} />,
+  document.getElementById('application')
+);
