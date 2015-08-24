@@ -16,7 +16,13 @@ app.engine('html', require('hbs').__express);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(compression());
-app.use(serveStatic('build'));
+
+if (process.env.NODE_ENV == 'development') {
+  app.use(serveStatic('build'));
+}
+else {
+  app.use(serveStatic('../build'));
+}
 
 // routes
 app.use('*', require('./router.js'));
