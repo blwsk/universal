@@ -15,7 +15,7 @@ app.engine('html', require('hbs').__express);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(compression());
-app.use(express.static('build'));
+app.use('/build', express.static('build'));
 
 // routes
 app.use('*', require('./router.js'));
