@@ -10,7 +10,6 @@
   },
   "dependencies": {
     "babel-core": "^5.8.22",
-    "bcrypt": "^0.8.5",
     "body-parser": "^1.13.1",
     "compression": "^1.4.4",
     "connect-redis": "^2.4.1",
