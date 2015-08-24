@@ -29,7 +29,7 @@ gulp.task('webpack', function() {
 
 gulp.task('start', function () {
   nodemon({
-    script: 'server/server.js',
+    script: 'app.js',
     ext: 'js jsx html',
     env: { 'NODE_ENV': 'development' },
     

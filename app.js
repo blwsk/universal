@@ -16,16 +16,10 @@ app.engine('html', require('hbs').__express);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(compression());
-
-if (process.env.NODE_ENV == 'development') {
-  app.use(serveStatic('build'));
-}
-else {
-  app.use(serveStatic('../build'));
-}
+app.use(serveStatic('build'));
 
 // routes
-app.use('*', require('./router.js'));
+app.use('*', require('./server/router.js'));
 
 const port = process.env.PORT || 5000;
 app.listen(port, function() {
