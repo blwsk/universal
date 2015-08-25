@@ -5,7 +5,8 @@
   "main": "server/app.js",
   "scripts": {
     "dev": "gulp --harmony",
-    "start": "node --harmony --use_strict --harmony_generators server/server.js"
+    "start": "node --harmony --use_strict --harmony_generators server/server.js",
+    "aws": "gulp --harmony aws"
   },
   "dependencies": {
     "babel-core": "^5.8.22",
