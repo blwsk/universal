@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "gulp --harmony",
     "start": "node --harmony --use_strict --harmony_generators server/server.js",
-    "deploy": "git push heroku master && git push origin master"
+    "deploy": "gulp aws && git push heroku master && git push origin master"
   },
   "dependencies": {
     "babel-core": "^5.8.22",
