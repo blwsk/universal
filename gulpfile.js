@@ -13,7 +13,7 @@ gulp.task('aws', function() {
 });
 
 gulp.task('webpack', function() {
-  return gulp.src('src/app.jsx')
+  return gulp.src('src/client.jsx')
     .pipe(webpack({
       watch: true,
       watchOptions: {

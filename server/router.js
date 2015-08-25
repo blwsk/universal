@@ -2,33 +2,50 @@
 require('babel-core/register');
 
 import express from 'express';
+import api from './api.js';
 import React from 'react/addons';
+import Router from 'react-router';
+import routes from '../src/routes.jsx';
 
-const router = express.Router();
+const r = express.Router();
+const Route = Router.Route;
+const Link = Router.Link;
+const RouteHandler = Router.RouteHandler;
 
-router.use( function(req, res, next) {
+
+r.use( function(req, res, next) {
   next();
 });
 
-const Button = require('../src/button.jsx');
-const markup = React.renderToString(<Button count={0} />);
+r.get('/api/all', api);
 
-router.get('*', function(req, res, next) {
-  if (process.env.NODE_ENV == 'production') {
-    res.render('template', {
-      title: 'Universal App',
-      body: markup,
-      assetRoot: '//s3.amazonaws.com/universal-demo/'
-    });
-  }
-  else {
-    res.render('template', {
-      title: 'Universal App',
-      body: markup,
-      assetRoot: '/build/'
-    });
-  }
-  
+r.get('*', function(req, res, next) {
+
+  let location = req.url;
+
+  Router.run(routes, location, function (Handler) {
+
+    let markup = React.renderToString(<Handler/>);
+
+    // production
+    if (process.env.NODE_ENV == 'production') {
+      res.render('template', {
+        title: 'Universal App',
+        body: markup,
+        assetRoot: '//s3.amazonaws.com/universal-demo/'
+      });
+    }
+
+    // local dev
+    else {
+      res.render('template', {
+        title: 'Universal App',
+        body: markup,
+        assetRoot: '/build/'
+      });
+    }
+  });
 });
 
-export default router;
+
+export default r;

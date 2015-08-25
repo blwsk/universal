@@ -1,8 +1,20 @@
 import React from 'react';
+import Router from 'react-router';
+const RouteHandler = Router.RouteHandler;
 
-import Button from './button.jsx';
+import Menu from './menu.jsx';
 
-React.render(
-  <Button count={0} />,
-  document.getElementById('application')
-);
+
+const App = React.createClass({
+
+  render() {
+    return (
+      <div className="wrapper">
+        <Menu />
+        <RouteHandler />
+      </div>
+    );
+  }
+});
+
+export default App;
