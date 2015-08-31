@@ -7,7 +7,10 @@ import React from 'react/addons';
 import Router from 'react-router';
 import routes from '../src/routes.jsx';
 
+// express router
 const r = express.Router();
+
+// react router for server rendering
 const Route = Router.Route;
 const Link = Router.Link;
 const RouteHandler = Router.RouteHandler;
